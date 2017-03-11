@@ -7,20 +7,25 @@ public class Tank : Unit {
     public float moveSpeed ;
     public float rotateSpeed ;
 
+    private TankWeapon tw;
     // Use this for initialization
     void Start()
     {
-
+        tw = GetComponent<TankWeapon>();
     }
 
     // Update is called once per frame
-    void Update () {
+    void FixedUpdate () {
         //Debug.Log(Input.GetAxis("HorizontalUI"));
         float horizontal = Input.GetAxis("HorizontalUI");//ad
         float vertical = Input.GetAxis("VerticalUI");//ws
-        transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime * vertical);
-        transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime * horizontal);
+        transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime * vertical);//ws
+        transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime * horizontal);//ad
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            tw.Shoot();
+        }
         //if (Input.GetKey(KeyCode.W))
         //{
         //    transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);

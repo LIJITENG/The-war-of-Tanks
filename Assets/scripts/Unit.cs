@@ -3,17 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Unit : MonoBehaviour {
-    public int health = 100;
+
+    public int health;
     public GameObject deadEffect;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
     public void ApplyDamage(int damage)
     {   if(health > damage)
         {
